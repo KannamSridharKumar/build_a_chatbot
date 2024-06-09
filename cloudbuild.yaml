@@ -1,11 +1,11 @@
 steps:
   # Step 1: Build the Docker image
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/esoteric-stream-417704/my-llm-app", "."]
+    args: ["build", "-t", "gcr.io/{PROJECT_ID}/my-llm-app", "."]
 
   # Step 2: Push the Docker image to GCR
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/esoteric-stream-417704/my-llm-app"]
+    args: ["push", "gcr.io/{PROJECT_ID}/my-llm-app"]
 
   # Step 3: Deploy the image to Cloud Run
   #- name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -17,7 +17,7 @@ steps:
         "deploy",
         "my-llm-app",
         "--image",
-        "gcr.io/esoteric-stream-417704/my-llm-app",
+        "gcr.io/{PROJECT_ID}/my-llm-app",
         "--port",
         "8080",
         "--allow-unauthenticated",
@@ -25,9 +25,8 @@ steps:
         "managed",
         "--region",
         "us-central1",
-        "--service-account=737391003159-compute@developer.gserviceaccount.com",
       ]
 # images:
-#   - "gcr.io/esoteric-stream-417704/my-ml-app"
+#   - "gcr.io/{PROJECT_ID}/my-ml-app"
 
 # timeout: '1200s'  # Set timeout to 20 minutes
