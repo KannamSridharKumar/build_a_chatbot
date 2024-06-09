@@ -27,7 +27,7 @@ import chainlit as cl
 
 
 # os.environ["OPENAI_API_KEY"] = "OPENAI_API_KEY"
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 
 @cl.on_chat_start
